@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SalvadorSIX7's Wishlist & Owned Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --card-bg: #13161e;
+    --card-bg2: #161922;
+    --border: #1e2330;
+    --text: #c8cdd8;
+    --text-dim: #6b7280;
+    --aaa: #f0c040;
+    --aa: #38d4c8;
+    --indie: #4ce06a;
+    --tba: #7a8aaa;
+    --own: #c8a84b;
+    --early-text: #5dd8d8;
+    --very-positive: #5dde83;
+    --overwhelmingly: #3dff9a;
+    --mostly-positive: #c6d96a;
+    --positive: #66c0f4;
+    --mixed: #b5a040;
+    --discount: #a8d85c;
+    --original: #6b7280;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+    padding: 40px 0 60px;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  .header { margin-bottom: 28px; }
+
+  .header h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .header-meta .sep { color: #2a2f3d; }
+
+  .progress-bar {
+    display: flex;
+    height: 5px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 14px 0 6px;
+    gap: 2px;
+  }
+
+  .seg-aaa   { background: var(--aaa);   flex: 2; }
+  .seg-aa    { background: var(--aa);    flex: 8; }
+  .seg-indie { background: var(--indie); flex: 20; }
+  .seg-tba   { background: var(--tba);   flex: 24; }
+  .seg-own   { background: var(--own);   flex: 99; }
+
+  .legend {
+    display: flex;
+    gap: 18px;
+    font-size: 11px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .l-aaa   { color: var(--aaa); }
+  .l-aa    { color: var(--aa); }
+  .l-indie { color: var(--indie); }
+  .l-tba   { color: var(--tba); }
+  .l-own   { color: var(--own); }
+
+  .section { margin-bottom: 44px; }
+
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .section-label.aaa   { color: var(--aaa); }
+  .section-label.aa    { color: var(--aa); }
+  .section-label.indie { color: var(--indie); }
+  .section-label.tba   { color: var(--tba); }
+  .section-label.own   { color: var(--own); }
+
+  .section-count {
+    font-size: 12px;
+    color: var(--text-dim);
+    background: #1a1e28;
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  .grid { display: grid; gap: 6px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 12px 14px 12px 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-height: 72px;
+    transition: background 0.15s;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .card.border-aaa::before   { background: var(--aaa); }
+  .card.border-aa::before    { background: var(--aa); }
+  .card.border-indie::before { background: var(--indie); }
+  .card.border-tba::before   { background: var(--tba); }
+  .card.border-own::before   { background: var(--own); }
+
+  .card:hover { background: var(--card-bg2); }
+
+  .card.border-tba { opacity: 0.75; }
+  .card.border-tba:hover { opacity: 1; }
+
+  .card.border-own { opacity: 0.7; }
+  .card.border-own:hover { opacity: 1; }
+
+  .card-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #e8ecf5;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+  }
+
+  .card-review { font-size: 11px; font-weight: 500; }
+  .review-very-positive    { color: var(--very-positive); }
+  .review-overwhelmingly   { color: var(--overwhelmingly); }
+  .review-mostly-positive  { color: var(--mostly-positive); }
+  .review-positive         { color: var(--positive); }
+  .review-mixed            { color: var(--mixed); }
+  .review-none             { color: var(--text-dim); }
+
+  .card-bottom {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
+
+  .price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #e8ecf5;
+  }
+
+  .price-original { font-size: 11px; color: var(--original); text-decoration: line-through; }
+
+  .discount-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--discount);
+    background: #1e2e0a;
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+
+  .release-date { font-size: 11px; color: var(--text-dim); }
+
+  .hours {
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .hours span {
+    color: #8fa4b5;
+    font-weight: 600;
+  }
+
+  .early-badge {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--early-text);
+    background: rgba(56,212,200,0.12);
+    border: 1px solid rgba(56,212,200,0.3);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  .owned-badge {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--own);
+    background: rgba(200,168,75,0.12);
+    border: 1px solid rgba(200,168,75,0.3);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  .footer {
+    margin-top: 40px;
+    font-size: 11px;
+    color: #3a4055;
+    display: flex;
+    gap: 16px;
+  }
+
+  .footer a { color: #3a4055; text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-2 { grid-template-columns: 1fr; }
+    .header h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>SalvadorSIX7's Wishlist &amp; Owned Games</h1>
+    <div class="header-meta">
+      <span>57 WISHLIST</span><span class="sep">·</span>
+      <span>99 OWNED</span><span class="sep">·</span>
+      <span>STEAM</span><span class="sep">·</span>
+      <span>2 AAA</span><span class="sep">·</span>
+      <span>10 AA</span><span class="sep">·</span>
+      <span>20 INDIE</span><span class="sep">·</span>
+      <span>24 TBA</span>
+    </div>
+    <div class="progress-bar">
+      <div class="seg-aaa"></div>
+      <div class="seg-aa"></div>
+      <div class="seg-indie"></div>
+      <div class="seg-tba"></div>
+      <div class="seg-own"></div>
+    </div>
+    <div class="legend">
+      <span class="l-aaa">AAA</span>
+      <span class="l-aa">AA</span>
+      <span class="l-indie">INDIE</span>
+      <span class="l-tba">TBA</span>
+      <span class="l-own">OWNED</span>
+    </div>
+  </div>
+
+  <!-- AAA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label aaa">AAA</span>
+      <span class="section-count">2 games</span>
+    </div>
+    <div class="grid grid-2">
+      <div class="card border-aaa">
+        <div class="card-name">NieR Replicant™ ver.1.22...</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom"><span class="price">$59.99</span></div>
+      </div>
+      <div class="card border-aaa">
+        <div class="card-name">Crimson Desert</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="price">$69.99</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label aa">AA</span>
+      <span class="section-count">10 games</span>
+    </div>
+    <div class="grid grid-4">
+      <div class="card border-aa">
+        <div class="card-name">Outpost Zero</div>
+        <div class="card-review review-mixed">Mixed</div>
+        <div class="card-bottom">
+          <span class="price">$3.99</span>
+          <span class="price-original">$19.99</span>
+          <span class="discount-badge">-80%</span>
+        </div>
+      </div>
+      <div class="card border-aa">
+        <div class="card-name">Pathologic 2</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom">
+          <span class="price">$6.99</span>
+          <span class="price-original">$34.99</span>
+          <span class="discount-badge">-80%</span>
+        </div>
+      </div>
+      <div class="card border-aa">
+        <div class="card-name">Astor: Blade of the Monolith</div>
+        <div class="card-review review-mixed">Mixed</div>
+        <div class="card-bottom">
+          <span class="price">$4.99</span>
+          <span class="price-original">$24.99</span>
+          <span class="discount-badge">-80%</span>
+        </div>
+      </div>
+      <div class="card border-aa">
+        <div class="card-name">Thymesia</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom">
+          <span class="price">$8.49</span>
+          <span class="price-original">$24.99</span>
+          <span class="discount-badge">-66%</span>
+        </div>
+      </div>
+      <div class="card border-aa">
+        <div class="card-name">Asterigos: Curse of the Stars</div>
+        <div class="card-review review-mostly-positive">Mostly Positive</div>
+        <div class="card-bottom">
+          <span class="price">$8.74</span>
+          <span class="price-original">$34.99</span>
+          <span class="discount-badge">-75%</span>
+        </div>
+      </div>
+      <div class="card border-aa">
+        <div class="card-name">Evil West</div>
+        <div class="card-review review-mostly-positive">Mostly Positive</div>
+        <div class="card-bottom">
+          <span class="price">$9.99</span>
+          <span class="price-original">$49.99</span>
+          <span class="discount-badge">-80%</span>
+        </div>
+      </div>
+      <div class="card border-aa">
+        <div class="card-name">No Rest for the Wicked</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom">
+          <span class="price">$39.99</span>
+          <span class="early-badge">Early Access</span>
+        </div>
+      </div>
+      <div class="card border-aa">
+        <div class="card-name">Witchfire</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom">
+          <span class="price">$39.99</span>
+          <span class="early-badge">Early Access</span>
+        </div>
+      </div>
+      <div class="card border-aa">
+        <div class="card-name">ARC Raiders</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom"><span class="price">$39.99</span></div>
+      </div>
+      <div class="card border-aa">
+        <div class="card-name">EVE Vanguard</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Q3 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDIE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label indie">INDIE</span>
+      <span class="section-count">20 games</span>
+    </div>
+    <div class="grid grid-4">
+      <div class="card border-indie">
+        <div class="card-name">SurrounDead</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom"><span class="price">$11.99</span><span class="early-badge">Early Access</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">The Killing Stone</div>
+        <div class="card-review review-positive">Positive</div>
+        <div class="card-bottom"><span class="price">$12.99</span><span class="early-badge">Early Access</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Mycopunk</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom"><span class="price">$13.49</span><span class="early-badge">Early Access</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Haste</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom">
+          <span class="price">$13.99</span>
+          <span class="price-original">$19.99</span>
+          <span class="discount-badge">-30%</span>
+        </div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Death Scourges</div>
+        <div class="card-review review-mostly-positive">Mostly Positive</div>
+        <div class="card-bottom">
+          <span class="price">$15.19</span>
+          <span class="price-original">$18.99</span>
+          <span class="discount-badge">-20%</span>
+        </div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Turbo Overkill</div>
+        <div class="card-review review-overwhelmingly">Overwhelmingly Positive</div>
+        <div class="card-bottom"><span class="price">$17.58</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Onirism</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom"><span class="price">$17.99</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">The Bloodline</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom"><span class="price">$19.99</span><span class="early-badge">Early Access</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Transience</div>
+        <div class="card-review review-mostly-positive">Mostly Positive</div>
+        <div class="card-bottom"><span class="price">$19.99</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Homura Hime</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom">
+          <span class="price">$22.49</span>
+          <span class="price-original">$24.99</span>
+          <span class="discount-badge">-10%</span>
+        </div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Blood West</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom"><span class="price">$24.99</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Total Chaos</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom"><span class="price">$24.99</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Shape of Dreams</div>
+        <div class="card-review review-very-positive">Very Positive</div>
+        <div class="card-bottom"><span class="price">$24.99</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Lay of the Land</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Apr 8, 2026</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">TankRat</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">2026</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">MOTORSLICE</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">2026</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Chronicles: Medieval</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">2026</span><span class="early-badge">Early Access</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">The Mound: Omen of Cthulhu</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">2026</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Liminal City: Axiom of Maria</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">2026</span></div>
+      </div>
+      <div class="card border-indie">
+        <div class="card-name">Far Far West</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">2028</span><span class="early-badge">Early Access</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TBA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label tba">NO DATE / TBA</span>
+      <span class="section-count">24 games</span>
+    </div>
+    <div class="grid grid-4">
+      <div class="card border-tba">
+        <div class="card-name">CONTROL Resonant</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Light No Fire</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Vindictus: Defying Fate</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">The Expanse: Osiris Reborn</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Coming Soon</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Rewilders: The Last Spring</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Coming Soon</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Negative Atmosphere</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Tides of Annihilation</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Coming Soon</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">The Wayward Realms</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Coming Soon</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Void Soul Awakening</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Coming Soon</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Steel Effigy</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Skarven</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">ILL</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Soul Split</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Coming Soon</span><span class="early-badge">Early Access</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">HUNGER</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Coming Soon</span><span class="early-badge">Early Access</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Ardent Wilds</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Sword Hero</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Bradley the Badger</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Duskfade</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">Coming Soon</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Project Shadowglass</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Diesel Knights</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">The Path Into The Abyss</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Status Entropos</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">NO LAW</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+      <div class="card border-tba">
+        <div class="card-name">Knight's Path</div>
+        <div class="card-review review-none">No Reviews Yet</div>
+        <div class="card-bottom"><span class="release-date">TBA</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OWNED GAMES -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label own">OWNED GAMES</span>
+      <span class="section-count">99 games</span>
+    </div>
+    <div class="grid grid-4">
+
+      <div class="card border-own">
+        <div class="card-name">Predecessor</div>
+        <div class="card-bottom"><span class="hours"><span>3,121.2h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">PlanetSide 2</div>
+        <div class="card-bottom"><span class="hours"><span>1,405.8h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Borderlands 2</div>
+        <div class="card-bottom"><span class="hours"><span>878.8h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">ELDEN RING</div>
+        <div class="card-bottom"><span class="hours"><span>417.3h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Gunfire Reborn</div>
+        <div class="card-bottom"><span class="hours"><span>414.4h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Don't Starve</div>
+        <div class="card-bottom"><span class="hours"><span>410.7h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Team Fortress 2</div>
+        <div class="card-bottom"><span class="hours"><span>218.9h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">DARK SOULS™ III</div>
+        <div class="card-bottom"><span class="hours"><span>211.9h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">The Binding of Isaac: Rebirth</div>
+        <div class="card-bottom"><span class="hours"><span>204.1h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">The Binding of Isaac</div>
+        <div class="card-bottom"><span class="hours"><span>196.4h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Fallout: New Vegas</div>
+        <div class="card-bottom"><span class="hours"><span>149.4h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Risk of Rain 2</div>
+        <div class="card-bottom"><span class="hours"><span>124.6h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Wavetale</div>
+        <div class="card-bottom"><span class="owned-badge">Wishlist</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Unturned</div>
+        <div class="card-bottom"><span class="hours"><span>78.1h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Megabonk</div>
+        <div class="card-bottom"><span class="hours"><span>63.4h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Brotato</div>
+        <div class="card-bottom"><span class="hours"><span>47.5h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Paladins</div>
+        <div class="card-bottom"><span class="hours"><span>59.4h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">DARK SOULS™ II: Scholar of the First Sin</div>
+        <div class="card-bottom"><span class="hours"><span>46.3h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">DARK SOULS™: Prepare To Die Edition</div>
+        <div class="card-bottom"><span class="hours"><span>40.9h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Remnant: From the Ashes</div>
+        <div class="card-bottom"><span class="hours"><span>25.8h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Battlefield 4™</div>
+        <div class="card-bottom"><span class="hours"><span>25.4h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Dead Cells</div>
+        <div class="card-bottom"><span class="hours"><span>22.4h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">SCARLET NEXUS</div>
+        <div class="card-bottom"><span class="hours"><span>20.8h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Inscryption</div>
+        <div class="card-bottom"><span class="hours"><span>14.9h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Paragon: The Overprime Final Test</div>
+        <div class="card-bottom"><span class="hours"><span>15.7h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Battlefield™ 1</div>
+        <div class="card-bottom"><span class="hours"><span>14.6h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">BioShock Infinite</div>
+        <div class="card-bottom"><span class="hours"><span>11.9h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Don't Starve Together</div>
+        <div class="card-bottom"><span class="hours"><span>8.6h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Despot's Game: Dystopian Battle Simulator</div>
+        <div class="card-bottom"><span class="hours"><span>7.3h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Jump Space</div>
+        <div class="card-bottom"><span class="hours"><span>6.3h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Dead Space 2</div>
+        <div class="card-bottom"><span class="hours"><span>6.1h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Fallout 4</div>
+        <div class="card-bottom"><span class="hours"><span>5.6h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Saints Row: The Third</div>
+        <div class="card-bottom"><span class="hours"><span>4.6h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Battlefield: Bad Company™ 2</div>
+        <div class="card-bottom"><span class="hours"><span>4.6h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Left 4 Dead 2</div>
+        <div class="card-bottom"><span class="hours"><span>4.3h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Dead Space (2008)</div>
+        <div class="card-bottom"><span class="hours"><span>4.2h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Cult of the Lamb</div>
+        <div class="card-bottom"><span class="hours"><span>2.8h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Elite Dangerous</div>
+        <div class="card-bottom"><span class="hours"><span>2.7h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Deep Rock Galactic</div>
+        <div class="card-bottom"><span class="hours"><span>2.6h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Resident Evil 4 (2005)</div>
+        <div class="card-bottom"><span class="hours"><span>2.5h</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">No Man's Sky</div>
+        <div class="card-bottom"><span class="hours"><span>2.3h</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Fault: Elder Orb</div>
+        <div class="card-bottom"><span class="hours"><span>114m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Cookie Clicker</div>
+        <div class="card-bottom"><span class="hours"><span>113m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Deadlock</div>
+        <div class="card-bottom"><span class="hours"><span>68m</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Prey</div>
+        <div class="card-bottom"><span class="hours"><span>61m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Fallout 3 GOTY Edition</div>
+        <div class="card-bottom"><span class="hours"><span>60m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Battlefield™ V</div>
+        <div class="card-bottom"><span class="hours"><span>49m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Prince of Persia</div>
+        <div class="card-bottom"><span class="hours"><span>49m</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Dragon's Dogma: Dark Arisen</div>
+        <div class="card-bottom"><span class="hours"><span>33m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Saints Row 2</div>
+        <div class="card-bottom"><span class="hours"><span>31m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">NieR:Automata™</div>
+        <div class="card-bottom"><span class="hours"><span>28m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">VOIN</div>
+        <div class="card-bottom"><span class="hours"><span>26m</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Clair Obscur: Expedition 33</div>
+        <div class="card-bottom"><span class="hours"><span>22m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Prototype</div>
+        <div class="card-bottom"><span class="hours"><span>22m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Metro 2033 Redux</div>
+        <div class="card-bottom"><span class="hours"><span>21m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">BioShock Remastered</div>
+        <div class="card-bottom"><span class="hours"><span>19m</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Lossless Scaling</div>
+        <div class="card-bottom"><span class="hours"><span>19m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Ziggurat 2</div>
+        <div class="card-bottom"><span class="hours"><span>19m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">ARK: Survival Evolved</div>
+        <div class="card-bottom"><span class="hours"><span>11m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Guild Wars 2®</div>
+        <div class="card-bottom"><span class="hours"><span>8m</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Moros Protocol</div>
+        <div class="card-bottom"><span class="hours"><span>8m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">BioShock 2 Remastered</div>
+        <div class="card-bottom"><span class="hours"><span>7m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Enlisted</div>
+        <div class="card-bottom"><span class="hours"><span>7m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Love Blades and Run</div>
+        <div class="card-bottom"><span class="hours"><span>4m</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Titanfall® 2</div>
+        <div class="card-bottom"><span class="hours"><span>3m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">The Elder Scrolls V: Skyrim Special Edition</div>
+        <div class="card-bottom"><span class="hours"><span>1m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Mega Man Legacy Collection 2</div>
+        <div class="card-bottom"><span class="hours"><span>1m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">One Step From Eden</div>
+        <div class="card-bottom"><span class="hours"><span>1m</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Ziggurat</div>
+        <div class="card-bottom"><span class="hours"><span>1m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">ARK: Survival Of The Fittest</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">BioShock</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">BioShock 2</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Borderlands GOTY</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Borderlands GOTY Enhanced</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Dead Island Riptide Definitive Edition</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Dead Space™ 3</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">DiRT Rally</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">GwenBlade</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">GwenBlade 2: Halloween</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Orcs Must Die! 2</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Portal</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Portal 2</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Prey: Typhon Hunter</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Resident Evil 5</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Resident Evil 6</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Saints Row IV</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Serious Sam 3: BFE</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Serious Sam Fusion 2017 (beta)</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Shadow Warrior 2</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <!-- Playtests -->
+      <div class="card border-own">
+        <div class="card-name">BattleBit Remastered Playtest</div>
+        <div class="card-bottom"><span class="hours"><span>22m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Far Far West Playtest</div>
+        <div class="card-bottom"><span class="hours"><span>13m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Diesel Knights Playtest</div>
+        <div class="card-bottom"><span class="hours"><span>5m</span></span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">Valor Mortis Playtest</div>
+        <div class="card-bottom"><span class="hours"><span>4m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">VOIN Playtest</div>
+        <div class="card-bottom"><span class="hours"><span>18m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">PlanetSide 2 - Test</div>
+        <div class="card-bottom"><span class="hours"><span>33m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">Predecessor Playtest</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+
+      <div class="card border-own">
+        <div class="card-name">RetroArch Playtest</div>
+        <div class="card-bottom"><span class="hours"><span>13m</span></span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">The Cycle Playtest</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+      <div class="card border-own">
+        <div class="card-name">THE FINALS PLAYTEST</div>
+        <div class="card-bottom"><span class="release-date">0h</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://reddit.com/r/patientgamers">reddit.com/r/patientgamers</a>
+    <span>SalvadorSIX7</span>
+  </div>
+
+</div>
+</body>
+</html>
